@@ -1,10 +1,16 @@
+"use client"
 import Image from 'next/image'
+import {useState} from 'react';
 
 export default function Login () {
+  const [isChecked, setIschecked] = useState(false);
+  const handleToggle = () =>{
+    setIschecked(prevState => !prevState);
+  }
     return (
-      <main className="flex flex-col md:flex-row flex items-center justify-center ">
+      <main className="  h-screen lg:flex">
         {/* left section */}
-        <section className="">
+        <section className="lg:block lg:w-1/2 flex flex-col md:flex-row flex items-center justify-center lg:px-12 xl:px-14 2xl:px-16 ">
           <div>
               <h1 className=" text-gray text-3xl block text-center my-2 font-semibold">Welcome back</h1>
               <h2 className=" text-gray text-l block text-center font-sm">Welcome back! Please enter your details.</h2>
@@ -29,7 +35,7 @@ export default function Login () {
 
                 </div>
                 </div>
-                <div>
+                <div className=''>
                 <label htmlfor="password" className="block text-sm font-medium leading-6 text-gray">
                     Password
                 </label>
@@ -40,7 +46,8 @@ export default function Login () {
                   autocomplete="current-password"
                   type="password"
                   required
-                  className='border w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-insert ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-insert focus:outline-none focus:boder-gray-600 sm:text-sm:leading-6'
+                  
+                  className='border w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 lg:px-12 xl:px-14 2xl:px-16 shadow-sm ring-1 ring-insert ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-insert focus:outline-none focus:boder-gray-600 sm:text-sm:leading-6'
 
                   />
 
@@ -48,13 +55,25 @@ export default function Login () {
 
                 </div>
 
-                <div className='flex flex-col md:flex-row text-align:center space-x-20'>
-                  <div className='flex flex-col md:flex-row  space-x-1'>
+                <div className='flex flex-col md:flex-row text-align:center space-x-10'>
+                  {/* checkbox */}
+                  <div className='flex sm:col-span item-center'>
+                  <div className='relative flex-shrink-0 w-6 h-6 mr-2 duration-200 ease-inX-'>
                     <input
                     type="checkbox"
+                    id='toggle'
+                    className='toggle-checkbox absolute block w-3 h-3 rounded-full border-0 '
+                    checked={isChecked}
+                    onChange={handleToggle}
                     
                     />
-                         <div className="block text-sm font-medium text-gray">Remember for 30 days</div>
+                    <label htmlfor='toggle'></label>
+                    </div>
+                    <label className=" text-sm font-medium text-gray-500 leading-3 ">
+                        Remember for 30 days
+
+                    </label>
+                         {/* <div className="block text-sm font-medium text-gray">Remember for 30 days</div> */}
                   </div>
                   <div className="text-sm">
                     <a href='#' className="font-semibold text-indigo-600 hover:text-indigo-500">
@@ -80,7 +99,7 @@ export default function Login () {
                 </div>
                 <div className='mt-5 text-center '>
                   <div className='text-gray text-m block font-sm'>
-                    Don’t have an account? <a href='#' className="font-semibold text-blue-600 hover:text-blue-500">Sign up</a>
+                    Don’t have an account? <a href='/Signup' className="font-semibold text-blue-600 hover:text-blue-500">Sign up</a>
                   </div>
                 </div>
 
@@ -96,8 +115,8 @@ export default function Login () {
         </section>
         {/* image section */}
 
-        <section className="">
-          <Image className='object-cover h-90 w-96'
+        <section className=" lg:block lg:w-1/2 hidden">
+          <Image className='object-cover h-full w-full'
           src="/image/Login.png"
           alt="side picture"
           width={100}

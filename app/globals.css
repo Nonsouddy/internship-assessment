@@ -10,5 +10,13 @@ body {
   background-image: url("../public/image/Sign.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  object-position: center;
+  width: 60%;
+  height: auto;
+  background-position: center;
+  background-size: false;
+  /* background-color: blueviolet; */
+ background:linear-gradient(rgba(123, 120, 196, 0.5),rgba(123, 120, 196, 0.5)),
+ 
 }
  
